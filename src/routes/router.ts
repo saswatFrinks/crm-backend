@@ -1,5 +1,6 @@
-import { Router } from "express";
-import PingController from "../controller/ping";
+/* eslint-disable @typescript-eslint/no-misused-promises */
+import { Router } from 'express'
+import PingController from '../controller/ping'
 
 const routes = Router()
 

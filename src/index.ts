@@ -1,5 +1,5 @@
 // import { Server } from '../node_modules/socket.io/dist/index'
-import { Server } from 'socket.io';
+import { Server } from 'socket.io'
 import httpServer from './server'
 // import SocketConnectionController from './controllers/socket/connection'
 
@@ -29,4 +29,4 @@ export const io = new Server<
 
 httpServer.listen(3000)
 
-console.log("listening")
+console.log('listening')
