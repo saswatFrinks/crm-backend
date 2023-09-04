@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 // import { Server } from '../node_modules/socket.io/dist/index'
 import { Server } from 'socket.io'
 import httpServer from './server'
