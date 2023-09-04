@@ -7,10 +7,11 @@
     "build": "webpack --mode=production --node-env=production",
     "serve": "node ./build/index.js",
     "start": "yarn build && yarn serve",
-    "dev": " webpack --node-env=development"
+    "dev": " webpack --mode=development && NODE_ENV=development nodemon build/index.js"
   },
   "dependencies": {
     "express": "^4.18.2",
+    "socket.io": "^4.7.2",
     "webpack": "^5.88.2"
   },
   "devDependencies": {
