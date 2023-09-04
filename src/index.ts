@@ -28,5 +28,8 @@ export const io = new Server<
 >()
 
 httpServer.listen(3000)
+io.on('connection', (socket) => {
+  socket.on('python-analysis', async (socketData: string) => {})
+})
 
 console.log('listening')
