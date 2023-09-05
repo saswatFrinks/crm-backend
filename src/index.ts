@@ -2,33 +2,25 @@
 // import { Server } from '../node_modules/socket.io/dist/index'
 import { Server } from 'socket.io'
 import httpServer from './server'
+import { exit } from 'process'
+import network from './config/network'
+import writeDeploymentVariables from './config/initVars'
+import DBRelation from './models/relation'
 // import SocketConnectionController from './controllers/socket/connection'
 
-interface ServerToClientEvents {
-  'trigger-rejection': (data: object) => void
-  'toggle-view': (viewMode: boolean) => void
-  'frontend-data-update': (data: object) => void
-}
+export const io = new Server(httpServer, { cors: { origin: '*' } })
 
-interface ClientToServerEvents {
-  hello: () => void
-  'python-analysis': (socketData: string) => void
-}
-
-interface InterServerEvents {
-  ping: () => void
-}
-
-interface SocketData {}
-
-export const io = new Server<
-  ClientToServerEvents,
-  ServerToClientEvents,
-  InterServerEvents,
-  SocketData
->()
-
-httpServer.listen(3000)
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
+httpServer.listen(network.PORT, async () => {
+  try {
+    console.log(`API server listening on port: ${network.PORT}`)
+    DBRelation.init()
+    await writeDeploymentVariables()
+  } catch (error) {
+    console.log('Cannot run server! ', error)
+    exit()
+  }
+})
 io.on('connection', (socket) => {
   socket.on('python-analysis', async (socketData: string) => {})
 })
