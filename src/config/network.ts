@@ -1,5 +1,6 @@
 import { config } from 'dotenv'
 
+config()
 const network = {
   PORT: 9000,
   JWT_EXPIRATION: '',

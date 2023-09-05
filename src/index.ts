@@ -6,6 +6,7 @@ import { exit } from 'process'
 import network from './config/network'
 import writeDeploymentVariables from './config/initVars'
 import DBRelation from './models/relation'
+import cache from './cache/redis'
 // import SocketConnectionController from './controllers/socket/connection'
 
 export const io = new Server(httpServer, { cors: { origin: '*' } })
@@ -15,6 +16,7 @@ httpServer.listen(network.PORT, async () => {
   try {
     console.log(`API server listening on port: ${network.PORT}`)
     DBRelation.init()
+    cache.init()
     await writeDeploymentVariables()
   } catch (error) {
     console.log('Cannot run server! ', error)
