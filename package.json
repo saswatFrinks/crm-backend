@@ -5,12 +5,10 @@
   "author": "Parth Ambre",
   "license": "MIT",
   "scripts": {
-    "prettier-watch": "onchange \"**/*\" -- prettier --write --ignore-unknown {{changed}}",
     "build": "webpack --mode=production --node-env=production",
     "serve": "node ./build/index.js",
     "start": "yarn build && yarn serve",
-    "dev": "webpack --mode=development && NODE_ENV=development nodemon build/index.js",
-    "dev:pretty": "concurrently \"webpack --mode=development && NODE_ENV=development nodemon build/index.js\" \"yarn prettier-watch\" ",
+    "dev": "webpack --mode=development --watch & nodemon build/index.js",
     "test": "jest",
     "lint": "eslint --ignore-path .eslintignore --ext .ts .",
     "lint:fix": "eslint --fix --ignore-path .eslintignore --ext .ts .",
