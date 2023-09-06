@@ -27,6 +27,11 @@ class Cache {
   increment = async (key: string): Promise<void> => {
     await this.client.incr(key)
   }
+
+  exists = async (key: string): Promise<boolean> => {
+    const value = await this.client.get(key)
+    return !!value
+  }
 }
 
 // create instance of Cache
