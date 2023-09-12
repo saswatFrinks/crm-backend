@@ -3,8 +3,13 @@ import BaseController from './base'
 
 class PingController extends BaseController {
   static get = async (req: Request, res: Response): Promise<void> => {
-    console.log(req.query)
-    BaseController.sendHttpResponse(res, 'Success', { return: 'pong' })
+    try {
+      console.log(req.query)
+      // throw APIError if you want to return error
+      BaseController.sendHttpResponse(res, 'Success', { return: 'pong' })
+    } catch (error) {
+      BaseController.sendErrorResponse(res, error)
+    }
   }
 }
 
