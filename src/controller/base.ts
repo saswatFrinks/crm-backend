@@ -24,7 +24,10 @@ class BaseController {
     res.status(error?.statusCode || 500).json({
       success: false,
       message: 'Error',
-      data: { message: error?.userMessage || '', details: error.message },
+      data: {
+        message: error?.userMessage || 'Internal error',
+        details: error.message,
+      },
     })
   }
 }
