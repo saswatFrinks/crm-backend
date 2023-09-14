@@ -10,10 +10,11 @@
     "start": "yarn build && yarn serve",
     "dev": "webpack --mode=development --watch & nodemon build/index.js",
     "dev:win": "concurrently \"webpack --mode=development --watch\"  \"nodemon build/index.js\"",
-    "test": "jest",
     "lint": "eslint --ignore-path .eslintignore --ext .ts .",
     "lint:fix": "eslint --fix --ignore-path .eslintignore --ext .ts .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test:unit": "jest --config='./unit.jest.config.js'",
+    "test:api": "jest --config='./api.jest.config.js'"
   },
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
