@@ -10,7 +10,7 @@ class User extends Model {
   declare phoneNumber: string
   declare password: string
   declare organizationId: string
-  declare createdAt: bigint
+  declare createdAt: Date
   declare isActive: boolean
 }
 
@@ -61,8 +61,9 @@ User.init(
       },
     },
     createdAt: {
-      type: DataTypes.BIGINT,
+      type: DataTypes.DATE,
       allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
   },
   {
