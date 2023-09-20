@@ -9,7 +9,7 @@ class User extends Model {
   declare email: string
   declare phoneNumber: string
   declare password: string
-  declare organizationId: number
+  declare organizationId: string
   declare createdAt: bigint
   declare isActive: boolean
 }
@@ -53,7 +53,7 @@ User.init(
       defaultValue: 0,
     },
     organizationId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: true,
       references: {
         model: 'organization',
