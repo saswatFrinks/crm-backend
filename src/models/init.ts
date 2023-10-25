@@ -1,14 +1,21 @@
-import { Sequelize } from 'sequelize'
-import network from '../config/network'
+import { drizzle } from "drizzle-orm/mysql2";
+import * as mysql from "mysql2/promise";
+import network from "../config/network";
 
-export const sequelize = new Sequelize(
-  `mysql://${network.DB_USER}:${network.DB_PASSWORD}@${network.DB_DOMAIN}:${network.DB_PORT}/${network.DB_NAME}`,
-  {
-    dialect: 'mysql',
-    dialectOptions: {},
-    timezone: '+05:30',
-    logging: (...msg) => {
-      console.log(msg)
-    },
-  }
-)
+class DB{
+    db:  ReturnType<typeof drizzle>
+    init = async () => {
+        const connection = await mysql.createConnection({
+              host: network.DB_DOMAIN,
+              user: network.DB_USER,
+              database: network.DB_NAME,
+              password: network.DB_PASSWORD
+            })
+             
+            this.db = drizzle(connection);
+    }
+}
+
+const dbConnection = new DB()
+
+export default dbConnection
