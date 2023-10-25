@@ -16,7 +16,6 @@ export const io = new Server(httpServer, { cors: { origin: '*' } })
 httpServer.listen(network.PORT, async () => {
   try {
     console.log(`API server listening on port: ${network.PORT}`)
-    await dbConnection.init()
     cache.init()
     await writeDeploymentVariables()
     const print = await VariantDAO.getVariants()

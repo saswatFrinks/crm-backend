@@ -1,9 +1,9 @@
-import dbConnection  from "../db/init"
+import db  from "../db/init"
 import variantSchema from "../db/variant.schema"
 
 class VariantDAO{
     static getVariants = async () => {
-       const vars =  await dbConnection.db.select().from(variantSchema)
+       const vars =  await db.select().from(variantSchema)
        return vars
     }
 }
