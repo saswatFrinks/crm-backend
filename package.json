@@ -8,6 +8,7 @@
     "build": "webpack --mode=production --node-env=production",
     "serve": "node ./build/index.js",
     "start": "yarn build && yarn serve",
+    "migration:generate": "drizzle-kit generate:pg --out migrations --schema src/db/*.ts",
     "dev": "webpack --mode=development --watch & nodemon build/index.js",
     "dev:win": "concurrently \"webpack --mode=development --watch\"  \"nodemon build/index.js\"",
     "lint": "eslint --ignore-path .eslintignore --ext .ts .",

@@ -1,5 +1,5 @@
-import dbConnection  from "../models/init"
-import variantSchema from "../models/variant"
+import dbConnection  from "../db/init"
+import variantSchema from "../db/variant.schema"
 
 class VariantDAO{
     static getVariants = async () => {

@@ -18,4 +18,5 @@ class DB{
 
 const dbConnection = new DB()
 
+
 export default dbConnection

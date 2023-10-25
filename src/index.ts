@@ -7,7 +7,7 @@ import network from './config/network'
 import writeDeploymentVariables from './config/initVars'
 import cache from './cache/redis'
 import VariantDAO from './dao/variant'
-import dbConnection from './models/init'
+import dbConnection from './db/init'
 // import SocketConnectionController from './controllers/socket/connection'
 
 export const io = new Server(httpServer, { cors: { origin: '*' } })
