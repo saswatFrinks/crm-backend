@@ -8,7 +8,7 @@ const connection = await mysql.createConnection({
     user: network.DB_USER,
     database: network.DB_NAME,
     password: network.DB_PASSWORD
-  })
+})
    
 const db = drizzle(connection);
 
